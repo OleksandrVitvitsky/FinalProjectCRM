@@ -1,5 +1,7 @@
 import express, { NextFunction, Request, Response } from 'express';
+import * as mongoose from 'mongoose';
 
+import { configs } from './configs/configs';
 import { ApiError } from './errors/api-error';
 
 const app = express();
@@ -20,7 +22,14 @@ process.on('uncaughtException', (e) => {
   process.exit(1);
 });
 
-// Start the server
-app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+/// Start the server
+app.listen(configs.APP_PORT, configs.APP_HOST, async () => {
+  try {
+    await mongoose.connect(configs.MONGO_URI);
+    console.log('MongoDB connected successfully');
+    console.log(`Server is running on port ${configs.APP_PORT}`);
+  } catch (error) {
+    console.error('Failed to connect to MongoDB', error);
+    process.exit(1);
+  }
 });
