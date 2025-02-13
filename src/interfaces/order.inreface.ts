@@ -14,8 +14,6 @@ export interface IOrder {
   course_type?: CourseTypeEnum;
   sum?: number;
   already_paid: boolean;
-  createdAt?: Date;
-  utm?: string;
-  msg?: string;
   status?: string;
+  createdAt?: Date;
 }
