@@ -1,4 +1,5 @@
-import { NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
+import { ObjectSchema, ValidationError } from 'joi';
 
 import { ApiError } from '../errors/api-error';
 
@@ -9,7 +10,11 @@ class CommonMiddleware {
         req.query = await validator.validateAsync(req.query);
         next();
       } catch (e) {
-        next(new ApiError(e.details[0].message, 400));
+        if (e instanceof ValidationError && e.details) {
+          next(new ApiError(e.details[0].message, 400));
+        } else {
+          next(new ApiError('Invalid query parameters', 400));
+        }
       }
     };
   }

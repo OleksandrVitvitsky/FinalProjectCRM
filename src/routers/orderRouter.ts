@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import { orderController } from '../controllers/orderController';
 import { commonMiddleware } from '../middlewares/common.middleware';
+import { OrderValidator } from '../validators/order.validator';
 
 const router = Router();
 router.get(

@@ -1,5 +1,4 @@
-export enum UserListOrderByEnum {
-  ID = 'id',
+export enum OrderListSearchFieldsEnum {
   NAME = 'name',
   SURNAME = 'surname',
   EMAIL = 'email',
@@ -9,7 +8,7 @@ export enum UserListOrderByEnum {
   COURSE_FORMAT = 'course_format',
   COURSE_TYPE = 'course_type',
   STATUS = 'status',
-  SUM = 'sum',
-  ALREADYPAID = 'alreadyPaid',
-  CREATED_AT = 'created_at',
+  GROUPS = 'groups',
+  START_DATE = 'start_date',
+  END_DATE = 'end_date',
 }
