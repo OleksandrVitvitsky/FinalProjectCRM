@@ -8,6 +8,7 @@ export class OrderPresenter {
   public static toResponse(data: IOrder): IOrder {
     return {
       _id: data._id,
+      internal_id: data.internal_id,
       name: data.name,
       surname: data.surname,
       email: data.email,

@@ -14,6 +14,6 @@ export const orderListSearchFieldTypes: Record<
   [OrderListSearchFieldsEnum.COURSE_TYPE]: 'string',
   [OrderListSearchFieldsEnum.STATUS]: 'string',
   [OrderListSearchFieldsEnum.GROUPS]: 'string',
-  [OrderListSearchFieldsEnum.START_DATE]: 'string',
-  [OrderListSearchFieldsEnum.END_DATE]: 'string',
+  [OrderListSearchFieldsEnum.START_CREATED_AT]: 'date',
+  [OrderListSearchFieldsEnum.END_CREATED_AT]: 'date',
 };

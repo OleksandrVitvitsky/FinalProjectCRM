@@ -1,5 +1,5 @@
 export enum OrderListSortByEnum {
-  ID = 'id',
+  INTERNAL_ID = 'internal_id',
   NAME = 'name',
   SURNAME = 'surname',
   EMAIL = 'email',

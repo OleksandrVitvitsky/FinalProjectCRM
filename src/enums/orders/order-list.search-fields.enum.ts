@@ -9,6 +9,6 @@ export enum OrderListSearchFieldsEnum {
   COURSE_TYPE = 'course_type',
   STATUS = 'status',
   GROUPS = 'groups',
-  START_DATE = 'start_date',
-  END_DATE = 'end_date',
+  START_CREATED_AT = 'start_created_at',
+  END_CREATED_AT = 'end_created_at',
 }

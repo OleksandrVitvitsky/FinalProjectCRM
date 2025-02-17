@@ -7,6 +7,7 @@ import { OrderListSortByEnum } from '../enums/orders/order-list.sort-by.enum';
 
 export interface IOrder {
   _id: string;
+  internal_id: number;
   name: string;
   surname?: string;
   email?: string;
@@ -36,8 +37,8 @@ export interface IOrderListQuery {
   searchCourse_type?: CourseTypeEnum;
   searchStatus?: OrderStatusEnum;
   searchGroups?: string;
-  searchStart_date?: string;
-  searchEnd_date?: string;
+  searchStart_created_at?: string;
+  searchEnd_created_at?: string;
 }
 
 export interface IOrderResponseList extends IOrderListQuery {

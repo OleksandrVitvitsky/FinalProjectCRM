@@ -10,6 +10,7 @@ const { Schema } = mongoose;
 
 const orderSchema = new Schema(
   {
+    internal_id: { type: Number, required: true, unique: true },
     name: { type: String, required: true },
     surname: { type: String, required: false },
     email: { type: String, required: false },

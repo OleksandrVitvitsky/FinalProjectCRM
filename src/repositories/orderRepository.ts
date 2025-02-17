@@ -13,8 +13,12 @@ class OrderRepository {
     const andConditions = [];
 
     for (const field of Object.values(OrderListSearchFieldsEnum)) {
+      // if (field === 'start_date' || field === 'end_date') {
+      //   continue;
+      // }
       const searchValue =
         query[`search${field.charAt(0).toUpperCase() + field.slice(1)}`];
+
       if (searchValue) {
         const fieldType = orderListSearchFieldTypes[field];
 
@@ -28,23 +32,23 @@ class OrderRepository {
       }
     }
 
-    if (query.searchStart_date && query.searchEnd_date) {
+    if (query.searchStart_created_at && query.searchEnd_created_at) {
       andConditions.push({
         created_at: {
-          $gte: new Date(query.searchStart_date),
-          $lte: new Date(query.searchEnd_date),
+          $gte: new Date(query.searchStart_created_at),
+          $lte: new Date(query.searchEnd_created_at),
         },
       });
-    } else if (query.searchStart_date) {
+    } else if (query.searchStart_created_at) {
       andConditions.push({
         created_at: {
-          $gte: new Date(query.searchStart_date),
+          $gte: new Date(query.searchStart_created_at),
         },
       });
-    } else if (query.searchEnd_date) {
+    } else if (query.searchEnd_created_at) {
       andConditions.push({
         created_at: {
-          $lte: new Date(query.searchEnd_date),
+          $lte: new Date(query.searchEnd_created_at),
         },
       });
     }
