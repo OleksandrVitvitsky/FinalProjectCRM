@@ -1,4 +1,4 @@
-export enum OrderStatusEnum {
+export enum OrdersStatusEnum {
   NEW = 'New',
   IN_WORK = 'In work',
   AGREE = 'Agree',

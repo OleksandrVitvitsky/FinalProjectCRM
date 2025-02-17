@@ -1,10 +1,10 @@
 import { SortOrder } from 'mongoose';
 
-import { OrderListSearchFieldsEnum } from '../enums/orders/order-list.search-fields.enum';
-import { OrderListSortByEnum } from '../enums/orders/order-list.sort-by.enum';
+import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enum';
+import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
 import { IOrder, IOrderListQuery } from '../interfaces/order.interface';
 import { Order } from '../models/order.model';
-import { orderListSearchFieldTypes } from '../types/order-list.search-fields-types';
+import { ordersSearchFieldTypes } from '../types/orders.search-fields-types';
 
 class OrderRepository {
   public async getList(query: IOrderListQuery): Promise<[IOrder[], number]> {
@@ -12,7 +12,7 @@ class OrderRepository {
 
     const andConditions = [];
 
-    for (const field of Object.values(OrderListSearchFieldsEnum)) {
+    for (const field of Object.values(OrdersSearchFieldsEnum)) {
       // if (field === 'start_date' || field === 'end_date') {
       //   continue;
       // }
@@ -20,7 +20,7 @@ class OrderRepository {
         query[`search${field.charAt(0).toUpperCase() + field.slice(1)}`];
 
       if (searchValue) {
-        const fieldType = orderListSearchFieldTypes[field];
+        const fieldType = ordersSearchFieldTypes[field];
 
         if (fieldType === 'number') {
           andConditions.push({ [field]: Number(searchValue) });
@@ -60,7 +60,7 @@ class OrderRepository {
     const sortObj: { [key: string]: SortOrder } = {};
     if (
       query.orderBy &&
-      Object.values(OrderListSortByEnum).includes(query.orderBy)
+      Object.values(OrdersSortByEnum).includes(query.orderBy)
     ) {
       sortObj[query.orderBy] = query.order;
     } else {

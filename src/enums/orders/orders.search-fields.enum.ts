@@ -1,5 +1,4 @@
-export enum OrderListSortByEnum {
-  INTERNAL_ID = 'internal_id',
+export enum OrdersSearchFieldsEnum {
   NAME = 'name',
   SURNAME = 'surname',
   EMAIL = 'email',
@@ -9,7 +8,7 @@ export enum OrderListSortByEnum {
   COURSE_FORMAT = 'course_format',
   COURSE_TYPE = 'course_type',
   STATUS = 'status',
-  SUM = 'sum',
-  ALREADYPAID = 'alreadyPaid',
-  CREATED_AT = 'created_at',
+  GROUPS = 'groups',
+  START_CREATED_AT = 'start_created_at',
+  END_CREATED_AT = 'end_created_at',
 }

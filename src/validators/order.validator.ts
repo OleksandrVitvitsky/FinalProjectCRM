@@ -1,9 +1,9 @@
 import joi from 'joi';
 
 import { SortEnum } from '../enums/common/sort.enum';
-import { OrderListSearchFieldsEnum } from '../enums/orders/order-list.search-fields.enum';
-import { OrderListSortByEnum } from '../enums/orders/order-list.sort-by.enum';
-import { orderListSearchFieldTypes } from '../types/order-list.search-fields-types';
+import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enum';
+import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
+import { ordersSearchFieldTypes } from '../types/orders.search-fields-types';
 
 const fieldSchemas = {
   string: joi.string().trim(),
@@ -19,12 +19,12 @@ export class OrderValidator {
         .valid(...Object.values(SortEnum))
         .default(SortEnum.DESC),
       orderBy: fieldSchemas.string
-        .valid(...Object.values(OrderListSortByEnum))
-        .default(OrderListSortByEnum.CREATED_AT),
+        .valid(...Object.values(OrdersSortByEnum))
+        .default(OrdersSortByEnum.CREATED_AT),
       ...(() => {
         const searchFields: Record<string, joi.Schema> = {};
-        for (const field of Object.values(OrderListSearchFieldsEnum)) {
-          const fieldType = orderListSearchFieldTypes[field];
+        for (const field of Object.values(OrdersSearchFieldsEnum)) {
+          const fieldType = ordersSearchFieldTypes[field];
           searchFields[
             `search${field.charAt(0).toUpperCase() + field.slice(1)}`
           ] = fieldSchemas[fieldType];

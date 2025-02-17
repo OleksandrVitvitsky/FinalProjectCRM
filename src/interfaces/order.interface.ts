@@ -2,8 +2,8 @@ import { SortEnum } from '../enums/common/sort.enum';
 import { CourseEnum } from '../enums/courses/course.enum';
 import { CourseFormatEnum } from '../enums/courses/course.format.enum';
 import { CourseTypeEnum } from '../enums/courses/course.type.enum';
-import { OrderStatusEnum } from '../enums/orders/order.status.enum';
-import { OrderListSortByEnum } from '../enums/orders/order-list.sort-by.enum';
+import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
+import { OrdersStatusEnum } from '../enums/orders/orders.status.enum';
 
 export interface IOrder {
   _id: string;
@@ -18,7 +18,7 @@ export interface IOrder {
   course_type?: CourseTypeEnum;
   sum?: number;
   already_paid: boolean;
-  status?: OrderStatusEnum;
+  status?: OrdersStatusEnum;
   created_at?: Date;
 }
 
@@ -26,7 +26,7 @@ export interface IOrderListQuery {
   limit?: number;
   page?: number;
   order?: SortEnum;
-  orderBy?: OrderListSortByEnum;
+  orderBy?: OrdersSortByEnum;
   searchName?: string;
   searchSurname?: string;
   searchEmail?: string;
@@ -35,7 +35,7 @@ export interface IOrderListQuery {
   searchCourse?: CourseEnum;
   searchCourse_format?: CourseFormatEnum;
   searchCourse_type?: CourseTypeEnum;
-  searchStatus?: OrderStatusEnum;
+  searchStatus?: OrdersStatusEnum;
   searchGroups?: string;
   searchStart_created_at?: string;
   searchEnd_created_at?: string;
