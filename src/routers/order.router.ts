@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { orderController } from '../controllers/orderController';
+import { orderController } from '../controllers/order.controller';
 import { commonMiddleware } from '../middlewares/common.middleware';
 import { OrderValidator } from '../validators/order.validator';
 

@@ -13,9 +13,6 @@ class OrderRepository {
     const andConditions = [];
 
     for (const field of Object.values(OrdersSearchFieldsEnum)) {
-      // if (field === 'start_date' || field === 'end_date') {
-      //   continue;
-      // }
       const searchValue =
         query[`search${field.charAt(0).toUpperCase() + field.slice(1)}`];
 
@@ -59,10 +56,10 @@ class OrderRepository {
 
     const sortObj: { [key: string]: SortOrder } = {};
     if (
-      query.orderBy &&
-      Object.values(OrdersSortByEnum).includes(query.orderBy)
+      query.sortBy &&
+      Object.values(OrdersSortByEnum).includes(query.sortBy)
     ) {
-      sortObj[query.orderBy] = query.order;
+      sortObj[query.sortBy] = query.sort;
     } else {
       throw new Error('Invalid or missing orderBy');
     }

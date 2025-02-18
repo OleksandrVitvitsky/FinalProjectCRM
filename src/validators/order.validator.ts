@@ -5,34 +5,43 @@ import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enu
 import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
 import { ordersSearchFieldTypes } from '../types/orders.search-fields-types';
 
-const fieldSchemas = {
-  string: joi.string().trim(),
-  number: joi.number(),
-  date: joi.date(),
-};
 export class OrderValidator {
+  private static fieldSchemas = {
+    string: joi.string().trim(),
+    number: joi.number(),
+    date: joi.date(),
+  };
+  private static limit = this.fieldSchemas.number.min(1).max(25).default(25);
+  private static page = this.fieldSchemas.number.min(1).default(1);
+  private static searchStart_created_at = this.fieldSchemas.date;
+  private static searchEnd_created_at = this.fieldSchemas.date;
+
+  private static sort = this.fieldSchemas.string
+    .valid(...Object.values(SortEnum))
+    .default(SortEnum.DESC);
+  private static sortBy = this.fieldSchemas.string
+    .valid(...Object.values(OrdersSortByEnum))
+    .default(OrdersSortByEnum.CREATED_AT);
+
+  private static validateSearchFieldType = () => {
+    const searchFields: Record<string, joi.Schema> = {};
+    for (const field of Object.values(OrdersSearchFieldsEnum)) {
+      const fieldType = ordersSearchFieldTypes[field];
+      searchFields[`search${field.charAt(0).toUpperCase() + field.slice(1)}`] =
+        this.fieldSchemas[fieldType];
+    }
+    return searchFields;
+  };
+
   public static listQuery = joi
     .object({
-      limit: fieldSchemas.number.min(1).max(25).default(25),
-      page: fieldSchemas.number.min(1).default(1),
-      order: fieldSchemas.string
-        .valid(...Object.values(SortEnum))
-        .default(SortEnum.DESC),
-      orderBy: fieldSchemas.string
-        .valid(...Object.values(OrdersSortByEnum))
-        .default(OrdersSortByEnum.CREATED_AT),
-      ...(() => {
-        const searchFields: Record<string, joi.Schema> = {};
-        for (const field of Object.values(OrdersSearchFieldsEnum)) {
-          const fieldType = ordersSearchFieldTypes[field];
-          searchFields[
-            `search${field.charAt(0).toUpperCase() + field.slice(1)}`
-          ] = fieldSchemas[fieldType];
-        }
-        return searchFields;
-      })(),
-      searchStart_created_at: fieldSchemas.date,
-      searchEnd_created_at: fieldSchemas.date,
+      limit: this.limit, //fieldSchemas.number.min(1).max(25).default(25),
+      page: this.page, //fieldSchemas.number.min(1).default(1),
+      sort: this.sort,
+      sortBy: this.sortBy,
+      searchStart_created_at: this.searchStart_created_at,
+      searchEnd_created_at: this.searchEnd_created_at,
+      ...this.validateSearchFieldType(),
     })
     .custom((value, helpers) => {
       if (value.searchStart_created_at && value.searchEnd_created_at) {

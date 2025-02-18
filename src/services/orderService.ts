@@ -3,7 +3,7 @@ import {
   IOrderResponseList,
 } from '../interfaces/order.interface';
 import { OrderPresenter } from '../presenters/order.presenter';
-import { orderRepository } from '../repositories/orderRepository';
+import { orderRepository } from '../repositories/order.repository';
 
 class OrderService {
   public async getList(query: IOrderListQuery): Promise<IOrderResponseList> {

@@ -25,8 +25,8 @@ export interface IOrder {
 export interface IOrderListQuery {
   limit?: number;
   page?: number;
-  order?: SortEnum;
-  orderBy?: OrdersSortByEnum;
+  sort?: SortEnum;
+  sortBy?: OrdersSortByEnum;
   searchName?: string;
   searchSurname?: string;
   searchEmail?: string;
