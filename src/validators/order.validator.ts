@@ -1,9 +1,9 @@
 import joi from 'joi';
 
 import { SortEnum } from '../enums/common/sort.enum';
-import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enum';
-import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
-import { ordersSearchFieldTypes } from '../types/orders.search-fields-types';
+import { OrdersSearchFieldsEnum } from '../enums/orders/orders-search-fields.enum';
+import { OrdersSortByEnum } from '../enums/orders/orders-sort-by.enum';
+import { ordersSearchFieldTypes } from '../types/orders-search-fields-types';
 
 export class OrderValidator {
   private static fieldSchemas = {

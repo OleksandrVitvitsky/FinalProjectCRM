@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 import { CourseEnum } from '../enums/courses/course.enum';
-import { CourseFormatEnum } from '../enums/courses/course.format.enum';
-import { CourseTypeEnum } from '../enums/courses/course.type.enum';
-import { OrdersStatusEnum } from '../enums/orders/orders.status.enum';
+import { CourseFormatEnum } from '../enums/courses/course-format.enum';
+import { CourseTypeEnum } from '../enums/courses/course-type.enum';
+import { OrderStatusEnum } from '../enums/orders/orders-status.enum';
 import { IOrder } from '../interfaces/order.interface';
 
 const { Schema } = mongoose;
@@ -24,7 +24,7 @@ const orderSchema = new Schema(
     created_at: { type: Date, required: false },
     utm: { type: String, required: false },
     msg: { type: String, required: false },
-    status: { type: String, enum: OrdersStatusEnum, required: false },
+    status: { type: String, enum: OrderStatusEnum, required: false },
   },
   {
     timestamps: true,

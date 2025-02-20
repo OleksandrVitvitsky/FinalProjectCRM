@@ -1,4 +1,4 @@
-import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enum';
+import { OrdersSearchFieldsEnum } from '../enums/orders/orders-search-fields.enum';
 
 export const ordersSearchFieldTypes: Record<
   string,

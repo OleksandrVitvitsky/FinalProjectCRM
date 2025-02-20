@@ -1,10 +1,10 @@
 import { SortOrder } from 'mongoose';
 
-import { OrdersSearchFieldsEnum } from '../enums/orders/orders.search-fields.enum';
-import { OrdersSortByEnum } from '../enums/orders/orders.sort-by.enum';
+import { OrdersSearchFieldsEnum } from '../enums/orders/orders-search-fields.enum';
+import { OrdersSortByEnum } from '../enums/orders/orders-sort-by.enum';
 import { IOrder, IOrderListQuery } from '../interfaces/order.interface';
 import { Order } from '../models/order.model';
-import { ordersSearchFieldTypes } from '../types/orders.search-fields-types';
+import { ordersSearchFieldTypes } from '../types/orders-search-fields-types';
 
 class OrderRepository {
   public async getList(query: IOrderListQuery): Promise<[IOrder[], number]> {
